@@ -1,0 +1,1 @@
+modem.callRemote("peripheralProxy:inductionMatrix_0", "getEnergy")

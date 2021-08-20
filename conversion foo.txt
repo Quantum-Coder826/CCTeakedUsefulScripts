@@ -1,0 +1,20 @@
+function foo(n)
+    if n >= 10^6 then
+        return string.format("%.2fm", n / 10^6)
+    elseif n >= 10^3 then
+        return string.format("%.2fk", n / 10^3)
+    else
+        return tostring(n)
+    end
+end
+
+while(true)
+do
+    CurrentPower = cell.getEnergy()
+    MaxPower = cell.getMaxEnergy()
+    monitor.clear();monitor.setCursorPos(1,1)
+    monitor.write(CurrentPower .."/" .. MaxPower)
+    sleep(0,8)    
+end
+ 
+peripheralProxy:inductionMatrix_0
