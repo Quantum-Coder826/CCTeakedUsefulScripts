@@ -21,17 +21,17 @@ if n >= 10^12 then
 end
 
 while true do
-    -- curren and maximum power in cell
+    -- current and maximum power in cell
     CurrentPower = convert(modem.callRemote(cell,"getEnergy"))
     MaxPower = convert(modem.callRemote(cell,"getMaxEnergy"))
     monitor.clear();monitor.setCursorPos(1,1)
     monitor.write(CurrentPower.."/"..MaxPower)
     
-    -- percantag filled
+    -- percentage filled
     monitor.setCursorPos(monitor.getCursorPos()+1,1)
     monitor.write(math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100) .. "%")
 
-    -- RF/s input and output
+    -- RF per second input and output
     Input = convert(modem.callRemote(cell,"getLastInput"))
     Output = convert(modem.callRemote(cell,"getLastOutput"))
     monitor.setCursorPos(1,2)
