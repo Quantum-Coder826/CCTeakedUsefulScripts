@@ -38,5 +38,5 @@ while true do
     monitor.write("In:"..Input.."/t")
     monitor.setCursorPos(1,3)
     monitor.write("Out:"..Output.."/t")
-    sleep(0,8)
+    sleep(0,8) -- Wait a bit to not overload periferals
 end
