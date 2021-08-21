@@ -8,5 +8,5 @@ print("Mekanism FissionReactor ScramIndicator \n \nBy QByte")
 
 while true do
   os.pullEvent("redstone")
-  print("A redstone input has changed!")
+  term.redirect(monitor)
 end
