@@ -1,11 +1,10 @@
 -- periferals config
 cell = "peripheralProxy:inductionMatrix_0"
-monitor = "monitor_0"
+monitor = peripheral.wrap("right")
 modem = peripheral.wrap("back")
 
 -- start code
-modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos(1,1)")
--- monitor.clear();monitor.setCursorPos(1,1)
+monitor.clear();monitor.setCursorPos(1,1)
 
 function convert(n) -- Corrects for RF Counter
 if n >= 10^12 then
