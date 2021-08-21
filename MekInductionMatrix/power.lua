@@ -5,6 +5,7 @@ modem = peripheral.wrap("back")
 
 -- start code
 modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
+print("Mekanism InductionMatrix PowerTracker \n \n By QByte)
 
 function convert(n) -- Corrects for RF Counter
 if n >= 10^12 then
