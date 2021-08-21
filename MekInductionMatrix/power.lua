@@ -1,10 +1,10 @@
 -- periferals config
 cell = "peripheralProxy:inductionMatrix_0"
-monitor = peripheral.wrap("right")
+monitor = "monitor_1"
 modem = peripheral.wrap("back")
 
 -- start code
-monitor.clear();monitor.setCursorPos(1,1)
+modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
 
 function convert(n) -- Corrects for RF Counter
 if n >= 10^12 then
@@ -24,8 +24,9 @@ while true do
     -- current and maximum power in cell
     CurrentPower = convert(modem.callRemote(cell,"getEnergy"))
     MaxPower = convert(modem.callRemote(cell,"getMaxEnergy"))
-    monitor.clear();monitor.setCursorPos(1,1)
-    monitor.write(CurrentPower.."/"..MaxPower)
+    modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
+    modem.callRemote(monitor,"write",(callRemote.."/"..MaxPower))
+    --monitor.write(CurrentPower.."/"..MaxPower)
     
     -- percentage filled
     monitor.setCursorPos(monitor.getCursorPos()+1,1)
