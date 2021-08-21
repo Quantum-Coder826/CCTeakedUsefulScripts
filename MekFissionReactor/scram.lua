@@ -15,7 +15,7 @@ while true do
 if scram == true then
     term.setCursorPos(3,(term.getCursorPos() + 1))
     term.setTextColor(16384);term.write("SCRAM!!")
-else then
+else
     term.setCursorPos(3,(term.getCursorPos() + 1))
     term.setTextColor(8192);term.write("Online") 
 end
