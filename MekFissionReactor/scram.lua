@@ -12,13 +12,12 @@ while true do
     term.clear();term.setCursorPos(1,1)
     term.write("Reactor Scram System")
     term.setCursorPos(3,1);term.write("Status:")
-    if scram == true then
-        term.setCursorPos(3,(term.getCursorPos() + 1))
-        term.setTextColor(16384);term.write("SCRAM!!")
-    end
-    elseif scram == false then
-        term.setCursorPos(3,(term.getCursorPos() + 1))
-        term.setTextColor(8192);term.write("Online") 
-    end
+if scram == true then
+    term.setCursorPos(3,(term.getCursorPos() + 1))
+    term.setTextColor(16384);term.write("SCRAM!!")
+else then
+    term.setCursorPos(3,(term.getCursorPos() + 1))
+    term.setTextColor(8192);term.write("Online") 
+end
     sleep(0,8)
 end
