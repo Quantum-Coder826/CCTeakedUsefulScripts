@@ -9,4 +9,5 @@ print("Mekanism FissionReactor ScramIndicator \n \nBy QByte")
 while true do
   os.pullEvent("redstone")
   term.redirect(monitor)
+  paintutils.drawBox(1,1,10,10)
 end
