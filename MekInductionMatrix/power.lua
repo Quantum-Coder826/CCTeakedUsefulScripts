@@ -25,12 +25,13 @@ while true do
     CurrentPower = convert(modem.callRemote(cell,"getEnergy"))
     MaxPower = convert(modem.callRemote(cell,"getMaxEnergy"))
     modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
-    modem.callRemote(monitor,"write",(callRemote.."/"..MaxPower))
-    --monitor.write(CurrentPower.."/"..MaxPower)
+    modem.callRemote(monitor,"write",(CurrentPower.."/"..MaxPower))
     
     -- percentage filled
-    monitor.setCursorPos(monitor.getCursorPos()+1,1)
-    monitor.write(math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100) .. "%")
+    modem.callRemote(monitor,"setCursorPos",modem.callRemote(monitor,"getCursorPost")+1,1)
+    --monitor.setCursorPos(monitor.getCursorPos()+1,1)
+    modem.callRemote(monitor,"write",modem.callRemote(cell,"getEnergyFilledPercentage") * 100) .. "%")
+    --monitor.write(math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100) .. "%")
 
     -- RF per second input and output
     Input = convert(modem.callRemote(cell,"getLastInput"))
