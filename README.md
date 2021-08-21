@@ -3,7 +3,7 @@
 
 ## FolderTree
 ```bash
-CompuerCraft
+CCTeakedUsefulScripts
 ├── MekInductionMatrix
 │   └── power.lua
 └── README.md
