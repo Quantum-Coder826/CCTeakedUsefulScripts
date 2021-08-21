@@ -28,7 +28,7 @@ while true do
     modem.callRemote(monitor,"write",(CurrentPower.."/"..MaxPower))
     
     -- percentage filled
-    modem.callRemote(monitor,"setCursorPos",modem.callRemote(monitor,"getCursorPost")+1,1)
+    modem.callRemote(monitor,"setCursorPos",modem.callRemote(monitor,"getCursorPos")+1,1)
     Percantage = math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100)
     modem.callRemote(monitor,"write",(Percantage.."%"))
 
