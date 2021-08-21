@@ -1,6 +1,7 @@
 --Peripherals/variables
 reactor = peripheral.wrap("back")
 
-while (reactor.getDamagePercentage() * 100) => 1 do
-    reactor.scram() and redstone.setAnalogOutput(1, "left")
+while true do
+    if (reactor.getDamagePercent() * 100) => 1 do reactor.scram(); redstone.setAnalogOutput("left", 1)
+
 end
