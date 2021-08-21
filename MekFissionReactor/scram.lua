@@ -12,7 +12,7 @@ while true do
     term.clear();term.setCursorPos(1,1)
     term.write("Reactor Scram System")
     term.setCursorPos(3,1);term.write("Status:")
-    if scram = true then
+    if scram == true then
         term.setCursorPos(3,(term.getCursorPos() + 1))
         term.setTextColor(16384);term.write("SCRAM!!")
     end
