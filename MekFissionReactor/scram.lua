@@ -4,7 +4,8 @@ scram = false
 
 while true do
     if reactor.getDamagePercent() * 100 >= 1 then 
-    reactor.scram(); redstone.setAnalogOutput("left", 1); reactor.setBurnRate(0.1);scram = true
+    reactor.scram(); redstone.setAnalogOutput("left", 1); reactor.setBurnRate(0.1)
+    scram = true
     end
     
     term.clear();term.setCursorPos(1,1)
