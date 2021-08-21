@@ -1,6 +1,6 @@
 -- periferals config
 cell = "peripheralProxy:inductionMatrix_0"
-monitor = "monitor_1"
+monitor = "monitor_0"
 modem = peripheral.wrap("back")
 
 -- start code
