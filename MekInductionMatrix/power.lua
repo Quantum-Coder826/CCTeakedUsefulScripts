@@ -35,9 +35,9 @@ while true do
     -- RF per second input and output
     Input = convert(modem.callRemote(cell,"getLastInput"))
     Output = convert(modem.callRemote(cell,"getLastOutput"))
-    monitor.setCursorPos(1,2)
-    monitor.write("In:"..Input.."/t")
-    monitor.setCursorPos(1,3)
-    monitor.write("Out:"..Output.."/t")
+    modem.callRemote(monitor,"setCursorPos",1,2)
+    modem.callRemote(monitor,"write",("In:"..Input.."/t"))
+    modem.callRemote(monitor,"setCursorPos",1,3)
+    modem.callRemote(monitor,"write",("Out:"..Output.."/t"))
     sleep(0,8) -- Wait a bit to not overload periferals
 end
