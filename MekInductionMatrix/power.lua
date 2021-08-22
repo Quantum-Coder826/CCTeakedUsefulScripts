@@ -8,7 +8,9 @@ modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
 print("Mekanism InductionMatrix PowerTracker \n \nBy QByte")
 
 function convert(n) -- Corrects for RF Counter
-if n >= 10^12 then
+if n >= 10^15 then
+        return string.format("%.2f PFE", n / 10^15)
+    elseif n >= 10^12 then
         return string.format("%.2f TFE", n / 10^12)
     elseif n >= 10^9 then
         return string.format("%.2f GFE", n / 10^9)
