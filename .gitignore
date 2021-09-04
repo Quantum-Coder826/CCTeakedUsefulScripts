@@ -1,4 +1,4 @@
 ## VSCode
 .vscode
 *.sh
-*.backup
+*.code-workspace
