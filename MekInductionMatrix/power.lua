@@ -5,7 +5,7 @@ modem = peripheral.wrap("back")
 
 -- var stuff
 monitor = true -- set to false if an monitor peripheral is not used
-
+protocol = 
 
 -- start code
 print("Mekanism InductionMatrix PowerTracker \n \nBy QByte")
@@ -34,25 +34,22 @@ while true do
     Output = convert(modem.callRemote(cell,"getLastOutput"))
     Percantage = math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100)
 
-    if monitor == true then
-        
-        -- setup monitor
-        modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
-        modem.callRemote(monitor,"write","InductionMatrix:")
+    -- setup monitor
+    modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
+    modem.callRemote(monitor,"write","InductionMatrix:")
 
-        -- write curret power and maximum power
-        modem.callRemote(monitor,"setCursorPos",1,2)
-        modem.callRemote(monitor,"write",(CurrentPower.."/"..MaxPower))
+    -- write curret power and maximum power
+    modem.callRemote(monitor,"setCursorPos",1,2)
+    modem.callRemote(monitor,"write",(CurrentPower.."/"..MaxPower))
 
-        -- write percantage filled
-        modem.callRemote(monitor,"setCursorPos",modem.callRemote(monitor,"getCursorPos")+1,2)
-        modem.callRemote(monitor,"write",(Percantage.."%"))
+    -- write percantage filled
+    modem.callRemote(monitor,"setCursorPos",modem.callRemote(monitor,"getCursorPos")+1,2)
+    modem.callRemote(monitor,"write",(Percantage.."%"))
 
-        -- write current power input and output
-        modem.callRemote(monitor,"setCursorPos",1,3)
-        modem.callRemote(monitor,"write",("In:"..Input.."/t"))
-        modem.callRemote(monitor,"setCursorPos",1,4)
-        modem.callRemote(monitor,"write",("Out:"..Output.."/t"))
-    end
+    -- write current power input and output
+    modem.callRemote(monitor,"setCursorPos",1,3)
+    modem.callRemote(monitor,"write",("In:"..Input.."/t"))
+    modem.callRemote(monitor,"setCursorPos",1,4)
+    modem.callRemote(monitor,"write",("Out:"..Output.."/t"))
     sleep(0,8) -- Wait a bit to not overload periferals
 end
