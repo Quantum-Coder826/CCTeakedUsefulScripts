@@ -3,8 +3,11 @@ cell = "peripheralProxy:inductionMatrix_0"
 monitor = "monitor_0"
 modem = peripheral.wrap("back")
 
+-- var stuff
+monitor = true -- set to false if an monitor peripheral is not used
+
+
 -- start code
-modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
 print("Mekanism InductionMatrix PowerTracker \n \nBy QByte")
 
 function convert(n) -- Corrects for RF Counter
@@ -24,27 +27,32 @@ if n >= 10^15 then
 end
 
 while true do
-    -- Add text on top
-    modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
-    modem.callRemote(monitor,"write","InductionMatrix:")
-
-    -- current and maximum power in cell
+    -- Get all data format it and store in strings
     CurrentPower = convert(modem.callRemote(cell,"getEnergy"))
     MaxPower = convert(modem.callRemote(cell,"getMaxEnergy"))
-    modem.callRemote(monitor,"setCursorPos",1,2)
-    modem.callRemote(monitor,"write",(CurrentPower.."/"..MaxPower))
-    
-    -- percentage filled
-    modem.callRemote(monitor,"setCursorPos",modem.callRemote(monitor,"getCursorPos")+1,2)
-    Percantage = math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100)
-    modem.callRemote(monitor,"write",(Percantage.."%"))
-
-    -- RF per second input and output
     Input = convert(modem.callRemote(cell,"getLastInput"))
     Output = convert(modem.callRemote(cell,"getLastOutput"))
-    modem.callRemote(monitor,"setCursorPos",1,3)
-    modem.callRemote(monitor,"write",("In:"..Input.."/t"))
-    modem.callRemote(monitor,"setCursorPos",1,4)
-    modem.callRemote(monitor,"write",("Out:"..Output.."/t"))
+    Percantage = math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100)
+
+    if monitor == true then
+        
+        -- setup monitor
+        modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
+        modem.callRemote(monitor,"write","InductionMatrix:")
+
+        -- write curret power and maximum power
+        modem.callRemote(monitor,"setCursorPos",1,2)
+        modem.callRemote(monitor,"write",(CurrentPower.."/"..MaxPower))
+
+        -- write percantage filled
+        modem.callRemote(monitor,"setCursorPos",modem.callRemote(monitor,"getCursorPos")+1,2)
+        modem.callRemote(monitor,"write",(Percantage.."%"))
+
+        -- write current power input and output
+        modem.callRemote(monitor,"setCursorPos",1,3)
+        modem.callRemote(monitor,"write",("In:"..Input.."/t"))
+        modem.callRemote(monitor,"setCursorPos",1,4)
+        modem.callRemote(monitor,"write",("Out:"..Output.."/t"))
+    end
     sleep(0,8) -- Wait a bit to not overload periferals
 end
