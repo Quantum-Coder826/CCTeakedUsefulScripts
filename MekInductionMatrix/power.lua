@@ -25,13 +25,21 @@ if n >= 10^15 then
 end
 
 while true do
-    -- Get all data format it and store in strings
-    local CurrentPower = convert(modem.callRemote(cell,"getEnergy"))
-    local MaxPower = convert(modem.callRemote(cell,"getMaxEnergy"))
-    local Input = convert(modem.callRemote(cell,"getLastInput"))
-    local Output = convert(modem.callRemote(cell,"getLastOutput"))
+    -- Get all data
+    local CurrentPower = modem.callRemote(cell,"getEnergy")
+    local MaxPower = modem.callRemote(cell,"getMaxEnergy")
+    local Input = modem.callRemote(cell,"getLastInput")
+    local Output = modem.callRemote(cell,"getLastOutput")
     local Percantage = math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100)
 
+    remote = CurrentPower .. MaxPower .. Input .. Output .. Percantage
+
+    -- format data
+    local CurrentPower = convert(CurrentPower)
+    local MaxPower = convert(MaxPower)
+    local Input = convert(Input)
+    local Output = convert(Output)
+    
     -- setup monitor
     modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
     modem.callRemote(monitor,"write","InductionMatrix:")
