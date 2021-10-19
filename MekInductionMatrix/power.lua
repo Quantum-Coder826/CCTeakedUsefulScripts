@@ -1,11 +1,9 @@
 -- periferals config
-cell = "peripheralProxy:inductionMatrix_0"
+cell = "inductionMatrix_0"
 monitor = "monitor_0"
 modem = peripheral.wrap("back")
 
--- var stuff
-monitor = true -- set to false if an monitor peripheral is not used
-protocol = 
+protocol = "null"
 
 -- start code
 print("Mekanism InductionMatrix PowerTracker \n \nBy QByte")
@@ -28,11 +26,11 @@ end
 
 while true do
     -- Get all data format it and store in strings
-    CurrentPower = convert(modem.callRemote(cell,"getEnergy"))
-    MaxPower = convert(modem.callRemote(cell,"getMaxEnergy"))
-    Input = convert(modem.callRemote(cell,"getLastInput"))
-    Output = convert(modem.callRemote(cell,"getLastOutput"))
-    Percantage = math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100)
+    local CurrentPower = convert(modem.callRemote(cell,"getEnergy"))
+    local MaxPower = convert(modem.callRemote(cell,"getMaxEnergy"))
+    local Input = convert(modem.callRemote(cell,"getLastInput"))
+    local Output = convert(modem.callRemote(cell,"getLastOutput"))
+    local Percantage = math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100)
 
     -- setup monitor
     modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
