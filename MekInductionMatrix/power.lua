@@ -7,7 +7,9 @@ protocol = "matrix"
  
 -- start code
 print("Mekanism InductionMatrix PowerTracker \n \nBy QByte")
+
 rednet.open("left")
+rednet.host(protocol, "MonitorHost")
 
 function convert(n) -- Corrects for RF Counter
 if n >= 10^15 then
