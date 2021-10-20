@@ -1,5 +1,5 @@
 -- vars
-i = 0
+local i = 0
 
 -- start code
 rednet.open("back")
@@ -25,15 +25,25 @@ while true do
     -- receve monitor data and format
     local event, sender, message = os.pullEvent("rednet_message")
     if sender == host then
-        for word in string.gmatch(message..tostring(message), '([^,]+)') do
-            if i = 0 then CurrentPower = convert(word)
-            elseif i = 1 then MaxPower = convert(word)
-            elseif i = 2 then Input = convert(word)
-            elseif i = 3 then Output = convert(word)
-            elseif i = 4 then Percantage = convert(word)
+        for word in string.gmatch(message, '([^,]+)') do
+            if i = 0 then CurrentPower = convert(tonumber(word))
+            elseif i = 1 then MaxPower = convert(tonumber(word))
+            elseif i = 2 then Input = convert(tonumber(word))
+            elseif i = 3 then Output = convert(tonumber(word))
+            elseif i = 4 then Percantage = convert(tonumber(word))
             end
         end
     end
+-- now we can write stuff to te screen
+term.clear()
+term.setCursorPos(1,1)
+term.write("InductionMatrix:")
 
-    
+-- write current and maxpower
+term.setCursorPos(1,2)
+term.write(CurrentPower.."/"..MaxPower)
+
+-- write percantage filled
+term.setCursorPos(term.getCursorPos + 1,2)
+term.write(Percantage.."%")
 end
