@@ -3,7 +3,7 @@ cell = "inductionMatrix_0"
 monitor = "monitor_0"
 modem = peripheral.wrap("back")
  
-protocol = "matrix"
+protocol = "test"
  
 -- start code
 print("Mekanism InductionMatrix PowerTracker \n \nBy QByte")
