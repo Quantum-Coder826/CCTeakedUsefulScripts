@@ -1,9 +1,10 @@
 -- vars
+protocol = "test"
 data = {}
 
 -- start code
 rednet.open("back")
-hostid = rednet.lookup("test")
+hostid = rednet.lookup(protocol)
 
 function convert(n) -- Corrects for RF Counter
 if n >= 10^15 then
@@ -23,7 +24,7 @@ end
 
 while true do
     -- receve monitor data and format
-    local id, message = rednet.receve("test" , 5)
+    local id, message = rednet.receive(protocol, 1)
     if id == hostid then
         for word in string.gmatch(message, '([^,]+)') do
             table.insert(data, tonumber(word))
