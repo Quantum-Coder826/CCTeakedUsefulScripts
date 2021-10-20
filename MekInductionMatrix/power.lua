@@ -34,7 +34,7 @@ while true do
     local Percantage = math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100)
  
     -- format data for remote monitor
-    remote = CurrentPower .. " " .. MaxPower .. " " .. Input .. " " .. Output .. " " .. Percantage
+    remote = CurrentPower .. "," .. MaxPower .. "," .. Input .. "," .. Output .. "," .. Percantage
     rednet.broadcast(remote, protocol)
 
     -- format data for local monitor
