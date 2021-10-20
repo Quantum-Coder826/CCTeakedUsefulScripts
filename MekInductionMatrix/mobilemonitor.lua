@@ -26,11 +26,11 @@ while true do
     local event, sender, message = os.pullEvent("rednet_message")
     if sender == host then
         for word in string.gmatch(message, '([^,]+)') do
-            if i = 0 then CurrentPower = convert(tonumber(word))
-            elseif i = 1 then MaxPower = convert(tonumber(word))
-            elseif i = 2 then Input = convert(tonumber(word))
-            elseif i = 3 then Output = convert(tonumber(word))
-            elseif i = 4 then Percantage = convert(tonumber(word))
+            if i == 0 then CurrentPower = convert(tonumber(word))
+            elseif i == 1 then MaxPower = convert(tonumber(word))
+            elseif i == 2 then Input = convert(tonumber(word))
+            elseif i == 3 then Output = convert(tonumber(word))
+            elseif i == 4 then Percantage = convert(tonumber(word))
             end
         end
     end
