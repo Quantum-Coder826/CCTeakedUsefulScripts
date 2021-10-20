@@ -34,11 +34,6 @@ term.clear()
 term.setCursorPos(1,1)
 term.write("InductionMatrix:")
 
--- write current and maxpower
 term.setCursorPos(1,2)
-term.write(CurrentPower.."/"..MaxPower)
-
--- write percantage filled
-term.setCursorPos(term.getCursorPos + 1,2)
-term.write(Percantage.."%")
+term.write(convert(tonumber(data[1])).."/"..convert(tonumber(data[2])))
 end
