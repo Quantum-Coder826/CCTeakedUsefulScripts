@@ -5,7 +5,6 @@ modem = peripheral.wrap("back")
 
 protocol = "test"
 
-
 -- start code
 print("Mekanism InductionMatrix PowerTracker \n \nBy QByte")
 
@@ -33,8 +32,9 @@ while true do
     Output = convert(modem.callRemote(cell,"getLastOutput"))
     Percantage = math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100)
 
-    -- Format all data together
+    -- Format data for remote and broadcrast
     dataforremote = (CurrentPower.."/"..MaxPower.." "..Percantage.."%\n".."In:"..Input.."/t\n".."Out:"..Output.."/t")
+    rednet.broadcast(dataforremote,protocol)
 
     -- setup monitor
     modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
