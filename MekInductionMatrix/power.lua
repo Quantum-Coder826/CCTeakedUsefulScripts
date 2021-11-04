@@ -34,11 +34,15 @@ while true do
     Percantage = math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100)
 
     -- Format all data together
-    dataout = (CurrentPower.."/"..MaxPower.." ".."Percentage".."\n"..Input.."\n"..Output)
+    dataout = (CurrentPower.."/"..MaxPower.." ".."Percentage".."%\n".."In:"..Input.."/t\n".."Out:"..Output.."/t")
 
-    -- -- setup monitor
-    -- modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
-    -- modem.callRemote(monitor,"write","InductionMatrix:")
+    -- setup monitor
+    modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
+    modem.callRemote(monitor,"write","InductionMatrix:")
+    modem.callRemote(monitor,"setCursorPos",1,2)
+
+    -- write all data to monitor
+    modem.callRemote(monitor,"print",dataout)
 
     -- -- write curret power and maximum power
     -- modem.callRemote(monitor,"setCursorPos",1,2)
