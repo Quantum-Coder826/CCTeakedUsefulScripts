@@ -34,7 +34,7 @@ while true do
     Percantage = math.floor(modem.callRemote(cell,"getEnergyFilledPercentage") * 100)
 
     -- Format all data together
-    dataforremote = (CurrentPower.."/"..MaxPower.." "..Percentage.."%\n".."In:"..Input.."/t\n".."Out:"..Output.."/t")
+    dataforremote = (CurrentPower.."/"..MaxPower.." "..Percantage.."%\n".."In:"..Input.."/t\n".."Out:"..Output.."/t")
 
     -- setup monitor
     modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
