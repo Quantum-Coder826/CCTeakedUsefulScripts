@@ -36,20 +36,20 @@ while true do
     -- Format all data together
     dataforremote = (CurrentPower.."/"..MaxPower.." "..Percantage.."%\n".."In:"..Input.."/t\n".."Out:"..Output.."/t")
 
-    ---- setup monitor
-    --modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
-    --modem.callRemote(monitor,"write","InductionMatrix:")
---
-    ---- write all data to monitor
-    --modem.callRemote(monitor,"setCursorPos",1,2)
-    --modem.callRemote(monitor,"write",(CurrentPower.."/"..MaxPower))
---
-    --modem.callRemote(monitor,"setCursorPos",modem.callRemote(monitor,"getCursorPos")+1,2)
-    --modem.callRemote(monitor,"write",(Percantage.."%"))
---
-    --modem.callRemote(monitor,"setCursorPos",1,3)
-    --modem.callRemote(monitor,"write",("In:"..Input.."/t"))
-    --modem.callRemote(monitor,"setCursorPos",1,4)
-    --modem.callRemote(monitor,"write",("Out:"..Output.."/t"))
-    --sleep(0,8) -- Wait a bit to not overload periferals
+    -- setup monitor
+    modem.callRemote(monitor,"clear");modem.callRemote(monitor,"setCursorPos",1,1)
+    modem.callRemote(monitor,"write","InductionMatrix:")
+
+    -- write all data to monitor
+    modem.callRemote(monitor,"setCursorPos",1,2)
+    modem.callRemote(monitor,"write",(CurrentPower.."/"..MaxPower))
+
+    modem.callRemote(monitor,"setCursorPos",modem.callRemote(monitor,"getCursorPos")+1,2)
+    modem.callRemote(monitor,"write",(Percantage.."%"))
+
+    modem.callRemote(monitor,"setCursorPos",1,3)
+    modem.callRemote(monitor,"write",("In:"..Input.."/t"))
+    modem.callRemote(monitor,"setCursorPos",1,4)
+    modem.callRemote(monitor,"write",("Out:"..Output.."/t"))
+    sleep(0,8) -- Wait a bit to not overload periferals
 end
