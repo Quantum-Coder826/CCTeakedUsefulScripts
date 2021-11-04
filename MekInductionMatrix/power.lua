@@ -5,7 +5,7 @@ modem = peripheral.wrap("back")
 
 protocol = "test"
 
--- start code
+-- nice stuff
 print("Mekanism InductionMatrix PowerTracker \n \nBy QByte")
 
 function convert(n) -- Corrects for RF Counter
