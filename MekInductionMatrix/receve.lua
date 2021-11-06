@@ -2,7 +2,7 @@
 protocol = "test"
 
 -- get host
-    host = rednet.lookup(protocol)
+host = rednet.lookup(protocol)
 
 while true do
     term.clear();term.setCursorPos(1,1)
