@@ -22,7 +22,7 @@ local function  correctquantity(n) -- correct int to str and apends proper quant
     elseif n >= 10^3 then
         return string.format("%.2f kFE", n / 10^3)
     else
-        return tostring(n)
+        return string.format("%.2f FE", n)
     end
 end
 
