@@ -37,5 +37,6 @@ while true do -- the loop
     -- todo: make rednet broadcast the data
 
     -- todo: print to local monitor
+    term.clear()
     print(textutils.serialise(data))
 end
