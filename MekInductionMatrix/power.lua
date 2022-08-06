@@ -8,6 +8,8 @@ local modem = peripheral.find("modem")
 local protocol = "battery" -- sets the rednet protocol
 
     -- TODO Add rednet stuff
+    rednet.host(protocol, "batter_monitor")
+    rednet.open("right")
 
 local function  correctquantity(n) -- correct int to str and apends proper quantity
     n = math.floor(n / 2.5) -- divide the value by 2.5 to convert from joules to FE
@@ -35,6 +37,7 @@ while true do -- the loop
     data["Percent"] = math.floor(modem.callRemote(battery, "getEnergyfilledPercentage") * 100)
     
     -- todo: make rednet broadcast the data
+    rednet.broadcast(data, protocol)
 
     -- todo: print to local monitor
     term.clear()
