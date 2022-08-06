@@ -11,9 +11,10 @@ end
 while true do
     local event, sender, message, protocol = os.pullEvent("redent_message") -- set the rednet_message event
     if protocol == wantedProtocol then
-        -- put te data on screen
+
         local data = textutils.unserialise(message)
         term.clear();term.setCursorPos(1,1) -- reset screen
+        
         term.write("InducionMatrix:") -- write all te data
         newline()
         term.write(data["CurrentPower"] .. "/" .. data["MaxPower"] .. " " .. data["Percent"] .. "%")
