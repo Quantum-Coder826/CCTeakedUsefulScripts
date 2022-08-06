@@ -1,4 +1,3 @@
-
 -- vars for periferals and data
 local data = {}
 local battery = "inductionPort_0"
@@ -6,6 +5,7 @@ local monitor = "monitor_0"
 local modem = peripheral.find("modem")
 
 local protocol = "battery" -- sets the rednet protocol
+local useterm = false -- set to true when not using a external monitor
 
 -- configure rednet
 rednet.host(protocol, "battery_monitor")
@@ -29,9 +29,14 @@ local function  correctquantity(n) -- correct int to str and apends proper quant
     end
 end
 
-local function newline()
+local function monitorNewline()
     local x, y = modem.callRemote(monitor, "getCursorPos")
     modem.callRemote(monitor, "setCursorPos",1,y + 1)
+end
+
+local function termNewline()
+    local x, y = term.getCursorPos()
+    term.setCursorPos(1, y + 1)
 end
 
 while true do
@@ -44,14 +49,26 @@ while true do
     
     -- send the data over rednet to receiving devices
     rednet.broadcast(textutils.serialise(data), protocol)
-
-    -- print data to local monitor
-    modem.callRemote(monitor, "clear");modem.callRemote(monitor, "setCursorPos",1,1) -- reset monitor
-    modem.callRemote(monitor, "write", "InducionMatrix:")
-    newline()
-    modem.callRemote(monitor, "write", (data["CurrentPower"] .. "/" .. data["MaxPower"] .. " " .. data["Percent"] .. "%"))
-    newline()
-    modem.callRemote(monitor, "write", ("In:" .. data["Input"] .. "/t"))
-    newline()
-    modem.callRemote(monitor, "write", ("Out:" .. data["Output"] .. "/t"))
+    
+    if useterm then
+        -- print data to termianl using term
+        term.clear();term.setCursorPos(1,1) -- reset the terminal
+        term.write("Inducionmatrix:")
+        termNewline()
+        term.write(data["CurrentPower"] .. "/" .. data["MaxPower"] .. " " .. data["Percent"] .. "%")
+        termNewline()
+        term.write("In:" .. data["Input"] .. "/t")
+        termNewline()
+        term.write("Out:" .. data["Output"] .. "/t")
+    else
+        -- print data to external monitor
+        modem.callRemote(monitor, "clear");modem.callRemote(monitor, "setCursorPos",1,1) -- reset monitor
+        modem.callRemote(monitor, "write", "InducionMatrix:")
+        monitorNewline()
+        modem.callRemote(monitor, "write", (data["CurrentPower"] .. "/" .. data["MaxPower"] .. " " .. data["Percent"] .. "%"))
+        monitorNewline()
+        modem.callRemote(monitor, "write", ("In:" .. data["Input"] .. "/t"))
+        monitorNewline()
+        modem.callRemote(monitor, "write", ("Out:" .. data["Output"] .. "/t"))
+    end
 end

@@ -15,7 +15,7 @@ while true do
     if protocol == wantedProtocol then
         local data = textutils.unserialise(message)
         
-        -- todo: write to the terminal
+        -- data to the terminal
         term.clear();term.setCursorPos(1,1) -- reset the terminal
         term.write("Inducionmatrix:")
         newline()
