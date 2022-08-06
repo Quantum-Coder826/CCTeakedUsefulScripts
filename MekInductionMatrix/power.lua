@@ -48,6 +48,7 @@ while true do -- the loop
     -- todo: print to local monitor
     modem.callRemote(monitor, "clear");modem.callRemote(monitor, "setCursorPos",1,1)
     modem.callRemote(monitor, "write", "InducionMatrix:")
+    newlineMonitor()
     modem.callRemote(monitor, "write", (data["CurrentPower"] .. "/" .. data["MaxPower"]))
     newlineMonitor()
 
