@@ -19,7 +19,7 @@ while true do
         term.clear();term.setCursorPos(1,1) -- reset the terminal
         term.write("Inducionmatrix:")
         newline()
-        term.write(data["CurrentPower"] .. "/" .. data["MaxPower"] .. " " .. data["Percentage"] .. "%")
+        term.write(data["CurrentPower"] .. "/" .. data["MaxPower"] .. " " .. data["Percent"] .. "%")
         newline()
         term.write("In:" .. data["Input"] .. "/t")
         newline()
