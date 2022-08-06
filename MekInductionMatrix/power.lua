@@ -34,10 +34,10 @@ while true do -- the loop
     data["MaxPower"] = correctquantity(modem.callRemote(battery, "getMaxEnergy"))
     data["Input"] = correctquantity(modem.callRemote(battery, "getLastInput"))
     data["Output"] = correctquantity(modem.callRemote(battery, "getLastOutput"))
-    data["Percent"] = math.floor(modem.callRemote(battery, "getEnergyfilledPercentage") * 100)
+    data["Percent"] = math.floor(modem.callRemote(battery, "getEnergyFilledPercentage") * 100)
     
     -- todo: make rednet broadcast the data
-    rednet.broadcast(data, protocol)
+    rednet.broadcast(textutils.serialise(data), protocol)
 
     -- todo: print to local monitor
     term.clear()
