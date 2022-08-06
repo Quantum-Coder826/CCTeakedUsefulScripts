@@ -10,3 +10,11 @@ end
 -- the code
 rednet.open("back")
 
+while true do
+    local event, sender, message, protocol = os.pullEvent("rednet_message")
+    if protocol == wantedProtocol then
+        -- todo: write to the monitor
+        print(textutils.unserialise(message))
+    
+    end
+  end
