@@ -31,7 +31,7 @@ end
 
 local function newlineMonitor()
     local x, y = modem.callRemote(monitor, "getCursorPos")
-    modem.callRemote(monitor, "setCursorPos",0,y + 1)
+    modem.callRemote(monitor, "setCursorPos",1,y + 1)
 end
 
 while true do -- the loop
