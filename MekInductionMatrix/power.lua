@@ -7,7 +7,7 @@ local modem = peripheral.find("modem")
 
 local protocol = "battery" -- sets the rednet protocol
 
--- TODO Add rednet stuff
+-- configure rednet
 rednet.host(protocol, "battery_monitor")
 rednet.open("right")
 
@@ -29,12 +29,12 @@ local function  correctquantity(n) -- correct int to str and apends proper quant
     end
 end
 
-local function newlineMonitor()
+local function newline()
     local x, y = modem.callRemote(monitor, "getCursorPos")
     modem.callRemote(monitor, "setCursorPos",1,y + 1)
 end
 
-while true do -- the loop
+while true do
     -- collect all the data
     data["CurrentPower"] =  correctquantity(modem.callRemote(battery, "getEnergy"))
     data["MaxPower"] = correctquantity(modem.callRemote(battery, "getMaxEnergy"))
@@ -46,12 +46,12 @@ while true do -- the loop
     rednet.broadcast(textutils.serialise(data), protocol)
 
     -- print data to local monitor
-    modem.callRemote(monitor, "clear");modem.callRemote(monitor, "setCursorPos",1,1)
+    modem.callRemote(monitor, "clear");modem.callRemote(monitor, "setCursorPos",1,1) -- reset monitor
     modem.callRemote(monitor, "write", "InducionMatrix:")
-    newlineMonitor()
+    newline()
     modem.callRemote(monitor, "write", (data["CurrentPower"] .. "/" .. data["MaxPower"] .. " " .. data["Percent"] .. "%"))
-    newlineMonitor()
+    newline()
     modem.callRemote(monitor, "write", ("In:" .. data["Input"] .. "/t"))
-    newlineMonitor()
+    newline()
     modem.callRemote(monitor, "write", ("Out:" .. data["Output"] .. "/t"))
 end
