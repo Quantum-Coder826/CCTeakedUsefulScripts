@@ -45,11 +45,13 @@ while true do -- the loop
     -- send the data over rednet to receiving devices
     rednet.broadcast(textutils.serialise(data), protocol)
 
-    -- todo: print to local monitor
+    -- print data to local monitor
     modem.callRemote(monitor, "clear");modem.callRemote(monitor, "setCursorPos",1,1)
     modem.callRemote(monitor, "write", "InducionMatrix:")
     newlineMonitor()
-    modem.callRemote(monitor, "write", (data["CurrentPower"] .. "/" .. data["MaxPower"]))
+    modem.callRemote(monitor, "write", (data["CurrentPower"] .. "/" .. data["MaxPower"] .. " " .. data["Percent"] .. "%"))
     newlineMonitor()
-
+    modem.callRemote(monitor, "write", ("In:" .. data["Input"] .. "/t"))
+    newlineMonitor()
+    modem.callRemote(monitor, "write", ("Out:" .. data["Output"] .. "/t"))
 end
