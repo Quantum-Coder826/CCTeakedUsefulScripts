@@ -1,6 +1,6 @@
 -- vars
 local reactor = peripheral.find("fissionReactorLogicAdapter")
-local i = 1
+local chat = peripheral.find("chatBox")
 
 term.clear();term.setCursorPos(1,1)
 term.write("Scram Monitoring system: ")

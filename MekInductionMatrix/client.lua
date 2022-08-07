@@ -2,7 +2,6 @@
 local wantedProtocol = "battery" -- sets the protocol to look for
 local monitor = peripheral.find("monitor_0") -- the name for the connected monitor
 
-
 -- local fuctions
 local function termNewline()
     local x, y = term.getCursorPos()
