@@ -29,14 +29,14 @@ local function  correctquantity(n) -- correct int to str and apends proper quant
     end
 end
 
-local function monitorNewline()
-    local x, y = modem.callRemote(monitor, "getCursorPos")
-    modem.callRemote(monitor, "setCursorPos",1,y + 1)
-end
-
-local function termNewline()
-    local x, y = term.getCursorPos()
-    term.setCursorPos(1, y + 1)
+local function NewLine()
+    if useterm then
+        local x, y = modem.callRemote(monitor, "getCursorPos")
+        modem.callRemote(monitor, "setCursorPos", 1, y + 1)
+    else
+        local x, y = term.getCursorPos()
+        term.setCursorPos(1, y + 1)
+    end
 end
 
 while true do
@@ -54,21 +54,21 @@ while true do
         -- print data to termianl using term
         term.clear();term.setCursorPos(1,1) -- reset the terminal
         term.write("Inducionmatrix:")
-        termNewline()
+        NewLine()
         term.write(data["CurrentPower"] .. "/" .. data["MaxPower"] .. " " .. data["Percent"] .. "%")
-        termNewline()
+        NewLine()
         term.write("In:" .. data["Input"] .. "/t")
-        termNewline()
+        NewLine()
         term.write("Out:" .. data["Output"] .. "/t")
     else
         -- print data to external monitor
         modem.callRemote(monitor, "clear");modem.callRemote(monitor, "setCursorPos",1,1) -- reset monitor
         modem.callRemote(monitor, "write", "InducionMatrix:")
-        monitorNewline()
+        NewLine()
         modem.callRemote(monitor, "write", (data["CurrentPower"] .. "/" .. data["MaxPower"] .. " " .. data["Percent"] .. "%"))
-        monitorNewline()
+        NewLine()
         modem.callRemote(monitor, "write", ("In:" .. data["Input"] .. "/t"))
-        monitorNewline()
+        NewLine()
         modem.callRemote(monitor, "write", ("Out:" .. data["Output"] .. "/t"))
     end
 end
