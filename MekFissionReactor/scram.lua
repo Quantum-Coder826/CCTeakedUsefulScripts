@@ -4,7 +4,7 @@ local chat = peripheral.find("chatBox")
 
 term.clear();term.setCursorPos(1,1)
 term.write("Scram Monitoring system: ")
-term.blit("RUNNING ", "dddddddd", "ffffffff")
+term.blit("RUNNING", "dddddddd", "ffffffff")
 term.setCursorBlink(true)
 
 while true do -- monitoring loop
