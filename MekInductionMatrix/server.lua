@@ -5,7 +5,7 @@ local monitor = "monitor_0"
 local modem = peripheral.find("modem")
 
 local protocol = "battery" -- sets the rednet protocol
-local useterm = false -- set to true when not using a external monitor
+local useterm = false -- set to true when not using a monitor
 
 -- configure rednet
 rednet.host(protocol, "battery_monitor")
