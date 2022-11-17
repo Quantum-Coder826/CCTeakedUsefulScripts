@@ -4,6 +4,7 @@ local battery = "inductionPort_0"
 local monitor = "monitor_0"
 local modem = peripheral.find("modem")
 
+-- change these vars for settings
 local protocol = "battery" -- sets the rednet protocol
 local useterm = false -- set to true when not using a monitor
 
