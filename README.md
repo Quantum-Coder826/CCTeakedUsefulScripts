@@ -1,2 +1,2 @@
 # ComputerCraft
- Some useful lua scripts using ComputerCraft:Tweaked and Advanced periferals.
+ Some useful lua scripts using ComputerCraft:Tweaked and Advanced peripherals.
